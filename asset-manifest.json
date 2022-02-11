@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/test-react-router-dom/static/css/main.7acaea2f.css",
+    "main.js": "/test-react-router-dom/static/js/main.9445d814.js",
+    "static/js/965.fb5e7332.chunk.js": "/test-react-router-dom/static/js/965.fb5e7332.chunk.js",
+    "static/css/973.67d7c091.chunk.css": "/test-react-router-dom/static/css/973.67d7c091.chunk.css",
+    "static/js/973.bbc7991d.chunk.js": "/test-react-router-dom/static/js/973.bbc7991d.chunk.js",
+    "static/js/770.c75e9165.chunk.js": "/test-react-router-dom/static/js/770.c75e9165.chunk.js",
+    "static/js/93.8b899468.chunk.js": "/test-react-router-dom/static/js/93.8b899468.chunk.js",
+    "static/js/122.bb4812c2.chunk.js": "/test-react-router-dom/static/js/122.bb4812c2.chunk.js",
+    "static/js/787.30f2ea76.chunk.js": "/test-react-router-dom/static/js/787.30f2ea76.chunk.js",
+    "static/js/774.c4fe65ad.chunk.js": "/test-react-router-dom/static/js/774.c4fe65ad.chunk.js",
+    "index.html": "/test-react-router-dom/index.html",
+    "main.7acaea2f.css.map": "/test-react-router-dom/static/css/main.7acaea2f.css.map",
+    "main.9445d814.js.map": "/test-react-router-dom/static/js/main.9445d814.js.map",
+    "965.fb5e7332.chunk.js.map": "/test-react-router-dom/static/js/965.fb5e7332.chunk.js.map",
+    "973.67d7c091.chunk.css.map": "/test-react-router-dom/static/css/973.67d7c091.chunk.css.map",
+    "973.bbc7991d.chunk.js.map": "/test-react-router-dom/static/js/973.bbc7991d.chunk.js.map",
+    "770.c75e9165.chunk.js.map": "/test-react-router-dom/static/js/770.c75e9165.chunk.js.map",
+    "93.8b899468.chunk.js.map": "/test-react-router-dom/static/js/93.8b899468.chunk.js.map",
+    "122.bb4812c2.chunk.js.map": "/test-react-router-dom/static/js/122.bb4812c2.chunk.js.map",
+    "787.30f2ea76.chunk.js.map": "/test-react-router-dom/static/js/787.30f2ea76.chunk.js.map",
+    "774.c4fe65ad.chunk.js.map": "/test-react-router-dom/static/js/774.c4fe65ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.9445d814.js"
+  ]
+}
