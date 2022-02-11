@@ -1,8 +1,8 @@
 {
-  "name": "test-react-router-dom",
+  "name": "goit-react-hw-05-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ITigor1985.github.io/test-react-router-dom/",
+  "homepage": "https://ITigor1985.github.io/goit-react-hw-05-movies/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
