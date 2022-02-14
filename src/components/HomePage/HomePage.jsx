@@ -1,4 +1,4 @@
-import { Link, useLocation  } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/publicationsApi.js';
 import { List } from './HomePage.styled';
@@ -6,10 +6,10 @@ import { List } from './HomePage.styled';
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-
+  console.log(location);
   useEffect(() => {
     async function getMovies() {
-      try {        
+      try {
         if (movies.length !== 0) {
           return;
         }
@@ -20,11 +20,10 @@ export default function HomePage() {
           return;
         }
 
-        const films = results.map(({ id, original_title,backdrop_path }) => {
-          return { id, original_title,backdrop_path };
-        });         
+        const films = results.map(({ id, original_title, backdrop_path }) => {
+          return { id, original_title, backdrop_path };
+        });
         setMovies(films);
-
       } catch (error) {
         console.log(error);
       }
@@ -33,13 +32,12 @@ export default function HomePage() {
   }, [movies]);
 
   return (
-    
     <List>
       {movies.map(movie => {
         return (
           <li key={movie.id}>
             <Link
-            state={{ from: location }}
+              // state={{ from: location }}
               style={{ display: 'block', margin: '1rem 0' }}
               to={`/movies/${movie.id}`}
               key={movie.id}

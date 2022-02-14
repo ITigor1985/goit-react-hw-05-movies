@@ -50,6 +50,7 @@ export default function MovieDetailsPage() {
   return (
     <>
       <CustomLink to={location?.state?.from ?? '/'}>Go Back</CustomLink>
+
       {error && <h2>Something went wrong, please try again</h2>}
       <InfoWrapper>
         {(filmData.backdrop_path && (
