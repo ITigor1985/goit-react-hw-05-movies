@@ -9,13 +9,11 @@ export default function HomePage() {
   const [page, setPage] = useState(1)
   const location = useLocation();
 
-  const handleChangePage = page => {
-    console.log(page)
-    return setPage({ page });
-  };
+  
 
   console.log(location);
   useEffect(() => {
+    
     async function getMovies() {
       try {
         if (movies.length !== 0) {
@@ -40,6 +38,11 @@ export default function HomePage() {
     getMovies();
     
   }, [movies, page]);
+
+  const handleChangePage = page => {
+    console.log(page)
+    return setPage(page );
+  };
 
   return (
     <>

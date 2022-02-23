@@ -7,7 +7,7 @@ function PaginatedItems({ itemsPerPage, handleChangePage }) {
     const [pageCount, setPageCount] = useState(10);
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
-    const [itemOffset, setItemOffset] = useState(0);
+    const [itemOffset, setItemOffset] = useState(1);
   
     // useEffect(() => {
     //   // Fetch items from another resources.
@@ -24,7 +24,7 @@ function PaginatedItems({ itemsPerPage, handleChangePage }) {
         `User requested page number ${event.selected}, which is offset ${newOffset}`
       );
       setItemOffset(newOffset);
-      handleChangePage(newOffset)
+      handleChangePage(event.selected)
     };
     
   
