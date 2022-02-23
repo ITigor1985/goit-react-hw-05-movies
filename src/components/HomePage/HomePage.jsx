@@ -2,10 +2,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/publicationsApi.js';
 import { List } from './HomePage.styled';
+import PaginatedItems from '../PaginatedItems'
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1)
   const location = useLocation();
+
+  const handleChangePage = page => {
+    console.log(page)
+    return setPage({ page });
+  };
+
   console.log(location);
   useEffect(() => {
     async function getMovies() {
@@ -13,8 +21,9 @@ export default function HomePage() {
         if (movies.length !== 0) {
           return;
         }
-        const { results, totalHits } = await getTrending();
-
+        console.log(`"eto" ${page}`)
+        const { results, totalHits } = await getTrending(page);
+        
         if (totalHits === 0) {
           alert('Nothing found');
           return;
@@ -29,9 +38,11 @@ export default function HomePage() {
       }
     }
     getMovies();
-  }, [movies]);
+    
+  }, [movies, page]);
 
   return (
+    <>
     <List>
       {movies.map(movie => {
         return (
@@ -55,5 +66,8 @@ export default function HomePage() {
         );
       })}
     </List>
+    <PaginatedItems itemsPerPage={20} handleChangePage={handleChangePage} />
+    </>
   );
+  
 }

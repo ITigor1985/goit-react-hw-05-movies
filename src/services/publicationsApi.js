@@ -1,8 +1,8 @@
 import axios from 'axios';
 const key = '051044c279aad319532da903b2292510';
 
-export const getTrending = async () => {
-  axios.defaults.baseURL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`;
+export const getTrending = async (page) => {
+  axios.defaults.baseURL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${page}`;
   const response = await axios.get(`${axios.defaults.baseURL}`);
   return response.data;
 };
