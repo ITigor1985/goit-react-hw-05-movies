@@ -5,8 +5,7 @@ function PaginatedItems({ itemsPerPage, handleChangePage }) {
   // We start with an empty list of items.
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(10);
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
+  
   const [itemOffset, setItemOffset] = useState(1);
 
   // useEffect(() => {

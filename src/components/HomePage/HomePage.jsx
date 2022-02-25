@@ -11,7 +11,8 @@ export default function HomePage() {
   console.log(page);
   console.log(location);
   useEffect(() => {
-    async function getMovies(page) {
+    async function getMovies() {
+      console.log(getMovies);
       try {
         if (movies.length !== 0) {
           return;
@@ -32,7 +33,7 @@ export default function HomePage() {
         console.log(error);
       }
     }
-    getMovies(page);
+    getMovies();
   }, [movies, page]);
 
   const handleChangePage = page => {
