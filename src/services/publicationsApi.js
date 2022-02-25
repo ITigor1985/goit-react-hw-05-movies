@@ -1,9 +1,12 @@
 import axios from 'axios';
 const key = '051044c279aad319532da903b2292510';
 
-export const getTrending = async (page) => {
-  axios.defaults.baseURL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${page}`;
+export const getTrending = async page => {
+  axios.defaults.baseURL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}&page=${
+    page + 1
+  }`;
   const response = await axios.get(`${axios.defaults.baseURL}`);
+  console.log(response);
   return response.data;
 };
 export const getSearch = async query => {

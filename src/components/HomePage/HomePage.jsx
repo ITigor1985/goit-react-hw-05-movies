@@ -1,29 +1,36 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/publicationsApi.js';
 import { List } from './HomePage.styled';
-import ReactPaginate from '../PaginatedItems';
-
+import ReactPaginate from 'react-paginate';
 export default function HomePage() {
+  const [totalPage, setTotalPage] = useState(0);
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const location = useLocation();
-  console.log(page);
-  console.log(location);
+  let [page, setPage] = useState(0);
+  const [currentItems, setCurrentItems] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 20;
+
+  //const location = useLocation();
+
   useEffect(() => {
     async function getMovies() {
-      console.log(getMovies);
       try {
         if (movies.length !== 0) {
           return;
         }
-        console.log(`"eto" ${page}`);
-        const { results, totalHits } = await getTrending(page);
 
-        if (totalHits === 0) {
+        const { results, total_results } = await getTrending(page);
+        setTotalPage(total_results);
+        if (total_results === 0) {
           alert('Nothing found');
           return;
         }
+        const endOffset = itemOffset + itemsPerPage;
+        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        setCurrentItems(movies.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(total_results / itemsPerPage));
 
         const films = results.map(({ id, original_title, backdrop_path }) => {
           return { id, original_title, backdrop_path };
@@ -34,11 +41,15 @@ export default function HomePage() {
       }
     }
     getMovies();
-  }, [movies, page]);
+  }, [currentItems, itemOffset, movies, page]);
 
-  const handleChangePage = page => {
-    console.log(page);
-    setPage(page);
+  const handlePageClick = event => {
+    setPage((page = event.selected));
+    const newOffset = (event.selected * itemsPerPage) % totalPage;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
   };
 
   return (
@@ -66,7 +77,15 @@ export default function HomePage() {
           );
         })}
       </List>
-      <ReactPaginate itemsPerPage={20} handleChangePage={handleChangePage} />
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      />
     </>
   );
 }
