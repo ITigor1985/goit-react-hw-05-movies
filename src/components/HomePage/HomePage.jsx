@@ -2,16 +2,16 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/publicationsApi.js';
 import { List } from './HomePage.styled';
-import PaginatedItems from '../PaginatedItems';
+import ReactPaginate from '../PaginatedItems';
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const location = useLocation();
-
+  console.log(page);
   console.log(location);
   useEffect(() => {
-    async function getMovies() {
+    async function getMovies(page) {
       try {
         if (movies.length !== 0) {
           return;
@@ -32,7 +32,7 @@ export default function HomePage() {
         console.log(error);
       }
     }
-    getMovies();
+    getMovies(page);
   }, [movies, page]);
 
   const handleChangePage = page => {
@@ -65,7 +65,7 @@ export default function HomePage() {
           );
         })}
       </List>
-      <PaginatedItems itemsPerPage={20} handleChangePage={handleChangePage} />
+      <ReactPaginate itemsPerPage={20} handleChangePage={handleChangePage} />
     </>
   );
 }
