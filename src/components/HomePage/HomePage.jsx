@@ -5,7 +5,7 @@ import { List } from './HomePage.styled';
 import ReactPaginate from 'react-paginate';
 export default function HomePage() {
   const [totalPage, setTotalPage] = useState(0);
-  const [movies, setMovies] = useState([]);
+  let [movies, setMovies] = useState([]);
   let [page, setPage] = useState(0);
   const [currentItems, setCurrentItems] = useState(1);
   const [pageCount, setPageCount] = useState(0);
