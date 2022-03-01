@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getTrending } from 'services/publicationsApi.js';
 import { List } from './HomePage.styled';
 import ReactPaginate from 'react-paginate';
+import propTypes from 'prop-types';
 export default function HomePage() {
   const [totalPage, setTotalPage] = useState(0);
   let [movies, setMovies] = useState([]);
@@ -12,12 +13,10 @@ export default function HomePage() {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 20;
 
-  //const location = useLocation();
-
   useEffect(() => {
     async function getMovies() {
       try {
-        if (movies.length !== 0) {
+        if (page !== page) {
           return;
         }
 
