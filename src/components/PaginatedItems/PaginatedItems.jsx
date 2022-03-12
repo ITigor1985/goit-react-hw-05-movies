@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+//import { useState, useEffect } from 'react';
 
 function PaginatedItems({ totalPages, setCurrentPage }) {
   // We start with an empty list of items.
