@@ -9,7 +9,7 @@ function PaginatedItems({ totalPages, setCurrentPage }) {
 
   const handlePageChange = e => {
     console.log(e.target.value);
-    setCurrentPage(e.currentTarget.value);
+    setCurrentPage(Number(e.currentTarget.value));
   };
   return (
     <>
