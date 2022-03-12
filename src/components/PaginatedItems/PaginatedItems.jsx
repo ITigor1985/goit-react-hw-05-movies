@@ -1,43 +1,27 @@
-import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
 
-function PaginatedItems({ itemsPerPage, handleChangePage }) {
+function PaginatedItems({ totalPages, setCurrentPage }) {
   // We start with an empty list of items.
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(10);
-  
-  const [itemOffset, setItemOffset] = useState(1);
+  const numberOfPages = [];
+  for (let i = 1; i <= totalPages; i++) {
+    numberOfPages.push(i);
+  }
 
-  // useEffect(() => {
-  //   // Fetch items from another resources.
-  //   const endOffset = itemOffset + itemsPerPage;
-  //   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  //   setCurrentItems(items.slice(itemOffset, endOffset));
-  //   setPageCount(Math.ceil(items.length / itemsPerPage));
-  // }, [itemOffset, itemsPerPage]);
-
-  // Invoke when user click to request another page.
-  const handlePageClick = event => {
-    const newOffset = (event.selected * itemsPerPage) % 500;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
-    setItemOffset(newOffset);
-    handleChangePage(event.selected);
+  const handlePageChange = e => {
+    console.log(e.target.value);
+    setCurrentPage(e.currentTarget.value);
   };
-
   return (
     <>
-      Hello
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
+      <ul>
+        {numberOfPages.map((page, index) => (
+          <li key={index}>
+            <button onClick={handlePageChange} type="button" value={page}>
+              {page}
+            </button>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

@@ -2,33 +2,33 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/publicationsApi.js';
 import { List } from './HomePage.styled';
+import PaginatedItems from 'components/PaginatedItems';
 
 export default function HomePage() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   let [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    async function getMovies() {
+    const getMovies = async currentPage => {
       try {
-        if (movies.length !== 0) {
-          return;
-        }
-        const { results, total_results } = await getTrending(2);
-        if (total_results === 0) {
+        const { results, total_pages } = await getTrending(currentPage);
+        if (total_pages === 0) {
           alert('Nothing found');
           return;
         }
-
+        setTotalPages(total_pages);
         const films = results.map(({ id, original_title, backdrop_path }) => {
           return { id, original_title, backdrop_path };
         });
-        console.log(films);
+
         setMovies(films);
       } catch (error) {
         console.log(error);
       }
-    }
-    getMovies();
-  }, [movies]);
+    };
+    getMovies(currentPage);
+  }, [currentPage]);
 
   return (
     <>
@@ -54,6 +54,7 @@ export default function HomePage() {
           );
         })}
       </List>
+      <PaginatedItems totalPages={totalPages} setCurrentPage={setCurrentPage} />
     </>
   );
 }
