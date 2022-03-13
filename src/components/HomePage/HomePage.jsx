@@ -54,7 +54,11 @@ export default function HomePage() {
           );
         })}
       </List>
-      <PaginatedItems totalPages={totalPages} setCurrentPage={setCurrentPage} />
+      <PaginatedItems
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </>
   );
 }
