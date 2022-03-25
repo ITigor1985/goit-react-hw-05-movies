@@ -9,7 +9,7 @@ export const List = styled.ul`
 
 export const ListLink = styled.ul`
   display: flex;
-  liststyletype: none;
+  list-style-type: none;
   & > :not(:last-child) {
     margin-right: 20px;
   }

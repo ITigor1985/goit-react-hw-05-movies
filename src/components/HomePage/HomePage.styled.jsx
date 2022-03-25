@@ -5,7 +5,7 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 30px 0;
+
   & > li {
     width: 250px;
   }
