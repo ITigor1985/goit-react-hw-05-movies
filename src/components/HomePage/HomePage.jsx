@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/publicationsApi.js';
-import { List } from './HomePage.styled';
+import { List, ImageContainer, StyledLink } from './HomePage.styled';
 import PaginatedItems from 'components/PaginatedItems';
 
 export default function HomePage() {
@@ -36,20 +35,25 @@ export default function HomePage() {
         {movies.map(movie => {
           return (
             <li key={movie.id}>
-              <Link
-                style={{ display: 'block', margin: '1rem 0' }}
-                to={`/movies/${movie.id}`}
-                key={movie.id}
-              >
-                {movie.backdrop_path && (
+              <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
+                {(movie.backdrop_path && (
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                     alt={`${movie.original_title}`}
                     width="250"
                   />
+                )) || (
+                  <ImageContainer>
+                    <img
+                      src={`https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.png`}
+                      alt="not-found"
+                      width="250"
+                      height="140"
+                    />
+                  </ImageContainer>
                 )}
                 {movie.original_title}
-              </Link>
+              </StyledLink>
             </li>
           );
         })}

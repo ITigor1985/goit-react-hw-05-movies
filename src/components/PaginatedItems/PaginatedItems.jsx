@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-function PaginatedItems({ totalPages, setCurrentPage }) {
+function PaginatedItems({ totalPages, setCurrentPage, currentPage }) {
   // We start with an empty list of items.
 
-  const [prevPage, setPrevPage] = useState(0);
+  const [prevPage, setPrevPage] = useState(currentPage);
   const numberOfPages = [];
   for (let i = 1; i <= totalPages; i++) {
     numberOfPages.push(i);
@@ -24,22 +24,23 @@ function PaginatedItems({ totalPages, setCurrentPage }) {
     sliceStartArray = numberOfPages.slice(0, 5);
   }
   if (numberOfPages.length > 10) {
+    numberOfPages.pop();
     sliceEndArray = numberOfPages.slice(-5);
   }
 
   sumArray = sliceStartArray.concat('...', sliceEndArray);
 
-  console.log(sliceEndArray);
   const handlePageChange = e => {
     let target = e.target;
+    console.log(target);
+    setCurrentPage(Number(e.target.value) - 1);
     setPrevPage(target);
-    if (prevPage === 0) {
+    console.log(prevPage);
+    if (prevPage === 0 || prevPage === target) {
       return;
     } else {
       prevPage.style.border = 'none';
     }
-
-    setCurrentPage(Number(e.target.value));
   };
   return (
     <>
